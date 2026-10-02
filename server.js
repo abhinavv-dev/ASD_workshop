@@ -1,35 +1,11 @@
-const express = require('express');
-const fs = require('fs/promises');
-const path = require('path');
+const express = require('express')
+const productRoutes = require('./routes/productRoutes')
 
-const app = express();
+const app = express()
+app.use(express.json());
 
-const PORT = 3000;
+app.use('/products', productRoutes);
 
-const pathToFile = path.join(__dirname, 'db.json');
-
-async function readFile() {
-    try {
-    const data = await fs.readFile(pathToFile, 'utf-8');
-    return JSON.parse(data);
-    } catch (error) {
-        console.error('Error reading file:', error);
-    }
-}
-
-app.get('/products/:id', async (req, res) => {
-    try {
-        const products = await readFile();
-        let {id} = req.params;
-        id = Number(id);
-        let product = products.find((item)=>{return item.id===id});
-        res.json(product);
-
-    } catch (error) {
-        console.error('Error reading file:', error);
-}});
-
-app.listen(PORT, () => {
-    console.log(`Example app listening on port ${PORT}`);
+app.listen(3000, () => {
+    console.log("Server is running on http://localhost:3000");
 });
-

@@ -1,16 +1,12 @@
 {
-  "name": "work",
+  "name": "caching-project",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "In-memory caching project with Express",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1" ,
-    "server" : "nodemon server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "express": "^5.2.1",
     "nodemon": "^3.1.14"
